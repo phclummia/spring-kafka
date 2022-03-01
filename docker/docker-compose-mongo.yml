@@ -1,0 +1,32 @@
+
+version: '3.1'
+networks:
+  kafka-net:
+    driver: bridge
+services:
+
+  mongo:
+    image: mongo
+    container_name: mongo-container
+    domainname: mongo-domain
+    hostname: mongo-host
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - kafka-net
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    networks:
+      - kafka-net
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/

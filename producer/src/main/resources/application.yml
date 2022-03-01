@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: kafka-producer
+  kafka:
+    producer:
+      bootstrap-servers: localhost:29092
+
+binance:
+  service:
+    rootUri: https://api.binance.com/api/v3/exchangeInfo
+    readTimeOutInSeconds: 15
+    connectTimeOutInSeconds: 25
+
+producerService:
+  symbols: BNBBTC,ETHBTC,LTCBTC,NEOBTC,QTUMETH,EOSETH,SNTETH,BNTETH,BCCBTC,GASBTC
+  topicName: coin_symbols
+
+
+logging:
+  level:
+    root: INFO
